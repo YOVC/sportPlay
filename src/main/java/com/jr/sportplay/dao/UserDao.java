@@ -7,5 +7,5 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 @Mapper
 public interface UserDao {
-    public User getUserByMassage(@Param("username") String username, @Param("password") String password);
+    public User getUserByMessage(@Param("username") String username, @Param("password") String password);
 }
