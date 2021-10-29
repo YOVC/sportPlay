@@ -5,4 +5,20 @@
     <select id="getUserByMessage" resultType="com.jr.sportplay.bean.User">
         SELECT * FROM easyuser WHERE username=#{username} AND PASSWORD=#{password} AND state=1;
     </select>
+
+    <select id="getAllUsers" resultType="com.jr.sportplay.bean.User">
+        SELECT * FROM easyuser
+        <if test="username != null">
+            WHERE username like #{username}
+        </if>
+        LIMit #{pageStart},#{pageSize};
+    </select>
+
+
+    <select id="getCount" resultType="int">
+        SELECT count(*) FROM easyuser
+        <if test="username != null">
+            WHERE username like #{username}
+        </if>
+    </select>
 </mapper>
