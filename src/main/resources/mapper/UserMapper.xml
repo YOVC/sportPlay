@@ -9,16 +9,37 @@
     <select id="getAllUsers" resultType="com.jr.sportplay.bean.User">
         SELECT * FROM easyuser
         <if test="username != null">
-            WHERE username like #{username}
+            WHERE username like %#{username}%
         </if>
-        LIMit #{pageStart},#{pageSize};
+        LIMIT #{pageStart},#{xpageSize};
     </select>
 
 
     <select id="getCount" resultType="int">
         SELECT count(*) FROM easyuser
         <if test="username != null">
-            WHERE username like #{username}
+            WHERE username like %#{username}%
         </if>
     </select>
+
+    <update id="updateState" >
+        UPDATE easyuser Set state = #{state} WHERE id = #{id};
+    </update>
+
+    <insert id="addUser">
+        INSERT INTO easyuser (username,password,email,role ,state )
+        VALUE(#{username},#{password},#{email},#{role},#{state});
+    </insert>
+
+    <delete id="deleteUser">
+        DELETE FROM easyuser WHERE id=#{id};
+    </delete>
+
+    <select id="getUpdateUser" resultType="com.jr.sportplay.bean.User">
+        SELECT * FROM easyuser  WHERE id=#{id};
+    </select>
+    <update id="editUser">
+        UPDATE INTO easyuser (username,password,email,role,state)
+        VALUE (#{username},#{password},#{email},#{role},#{state});
+    </update>
 </mapper>

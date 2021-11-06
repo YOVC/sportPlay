@@ -15,6 +15,7 @@ public class MenuController {
     @Autowired
     MenuDao menuDao;
 
+    //导航栏信息
     @GetMapping("/menus")
     public String getMenus(){
         HashMap<String,Object> datas=new HashMap<>();

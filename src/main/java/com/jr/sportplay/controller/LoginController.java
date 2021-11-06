@@ -17,6 +17,7 @@ public class LoginController {
     @Autowired
     UserDao userDao;
 
+
     @PostMapping("/login")
     public String userLogin(@RequestBody User user){
         String flag="error";
